@@ -1,9 +1,15 @@
-# Predict Customer Churn with Clean Code
+# Predict Customer Churn
 
-Identification of credit card customers most likely to churn. 
+- Project **Predict Customer Churn** of ML DevOps Engineer Nanodegree Udacity
 
-Includes a Python package for a machine learning project that follows coding (PEP8) and engineering best practices for implementing software (modular, documented and tested). 
+## Project Description
+Your project description here.
 
-The package also has the flexibility to run interactively or from the command-line interface (CLI).  
+## Files and data description
+Overview of the files and data present in the root directory. 
 
-It also introduces a problem data scientists across companies face all the time: How do we identify (and later intervene with) customers who are likely to churn?
+## Running Files
+How do you run your files? What should happen when you run your files?
+
+
+
