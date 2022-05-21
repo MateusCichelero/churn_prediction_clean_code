@@ -69,24 +69,29 @@ def perform_eda(df_data: pd.DataFrame) -> None:
 
     df_data['Churn'].hist()
     plt.savefig(PATH_TO_CHURN_DISTRIBUTION)
+    plt.clf()
 
     df_data['Customer_Age'].hist()
     plt.savefig(PATH_TO_AGE_DISTRIBUTION)
+    plt.clf()
 
     df_data['Marital_Status'].value_counts('normalize').plot(kind='bar')
     plt.savefig(PATH_TO_MARITAL_DISTRIBUTION)
+    plt.clf()
 
     sns.histplot(df_data['Total_Trans_Ct'], stat='density', kde=True)
     plt.savefig(PATH_TO_TRANSACTION_DISTRIBUTION)
+    plt.clf()
 
     sns.heatmap(df_data.corr(), annot=False, cmap='Dark2_r', linewidths=2)
     plt.savefig(PATH_TO_HEATMAP)
+    plt.clf()
 
 
 def encoder_helper(
         df_data: pd.DataFrame,
         category_lst: list,
-        response: str) -> pd.DataFrame:
+        response: str = 'Churn') -> pd.DataFrame:
     '''
     helper function to turn each categorical column into a new column with
     proportion of churn for each category - associated with cell 15 from the notebook
@@ -98,7 +103,7 @@ def encoder_helper(
             naming variables or index y column]
 
     output:
-            df: pandas dataframe with new columns
+            df_data: pandas dataframe with new columns
     '''
 
     # Using feature-engine library for automating categorical mean encoding:
@@ -183,6 +188,7 @@ def classification_report_image(y_data: list,
             'fontsize': 10}, fontproperties='monospace')
     plt.axis('off')
     plt.savefig(PATH_TO_LR_RESULTS)
+    plt.clf()
 
     # Generating and saving train and test classification report for rf:
     plt.text(0.01, 1.25, str('Random Forest Train'), {
@@ -195,6 +201,7 @@ def classification_report_image(y_data: list,
              'fontsize': 10}, fontproperties='monospace')  # approach improved by OP -> monospace!
     plt.axis('off')
     plt.savefig(PATH_TO_RF_RESULTS)
+    plt.clf()
 
 
 def feature_importance_plot(
@@ -233,6 +240,7 @@ def feature_importance_plot(
     # Add feature names as x-axis labels
     plt.xticks(range(x_data.shape[1]), names, rotation=90)
     plt.savefig(output_pth)
+    plt.clf()
 
 
 def train_models(
@@ -285,10 +293,10 @@ def train_models(
     lrc_plot = plot_roc_curve(lr_model, x_test, y_test)
     plt.figure(figsize=(15, 8))
     ax_plt = plt.gca()
-    rfc_plot = plot_roc_curve(rfc_model, x_test, y_test, ax=ax_plt, alpha=0.8)
-    rfc_plot.plot(ax=ax_plt, alpha=0.8)
+    plot_roc_curve(rfc_model, x_test, y_test, ax=ax_plt, alpha=0.8)
     lrc_plot.plot(ax=ax_plt, alpha=0.8)
     plt.savefig(PATH_TO_ROC_CURVE)
+    plt.clf()
 
     # generate and save feature importances
     feature_importance_plot(rfc_model, x_test, PATH_TO_FEATURE_IMPORTANCES)

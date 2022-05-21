@@ -1,3 +1,10 @@
+"""
+Module that stores constants used in project
+
+Author: Mateus Cichelero
+Date: May 2022
+"""
+
 PATH_TO_DATA = './data/bank_data.csv'
 PATH_TO_FEATURE_IMPORTANCES = './images/results/feature_importances.png'
 PATH_TO_CHURN_DISTRIBUTION = './images/eda/churn_distribution.png'
@@ -10,8 +17,6 @@ PATH_TO_RF_RESULTS = './images/results/rf_results.png'
 PATH_TO_RFC_MODEL = './models/rfc_model.pkl'
 PATH_TO_LR_MODEL = './models/logistic_model.pkl'
 PATH_TO_ROC_CURVE = './images/results/roc_curve_result.png'
-
-
 
 CAT_COLUMNS = [
     'Gender',
@@ -30,7 +35,7 @@ KEEP_COLS = ['Customer_Age', 'Dependent_count', 'Months_on_book',
 
 PARAM_GRID = { 
     'n_estimators': [200, 500],
-    'max_features': ['auto', 'sqrt'],
+    'max_features': ['sqrt'],
     'max_depth' : [4,5,100],
     'criterion' :['gini', 'entropy']
 }
